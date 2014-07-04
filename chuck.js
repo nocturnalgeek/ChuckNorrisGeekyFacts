@@ -91,11 +91,28 @@ var chuck_norris_geeky_facts = [
 	"Chuck Norris wrote Hello World once... it was called Unix."
 ];
 
-$("#random_fact").click(function() {
-	$("#fact").text(chuck_norris_geeky_facts[Math.floor(Math.random() * chuck_norris_geeky_facts.length)]);
-});
-$("#fact").text(chuck_norris_geeky_facts[Math.floor(Math.random() * chuck_norris_geeky_facts.length)]);
+var getAFact = function() {
+	// check if we're out of facts to avoid an indexOutOfBounds exception
+	if(chuck_norris_geeky_facts.length === 0) {
+		// all the facts have been seen, tell user that they're done.
+		$("#fact").text("Chuck Norris can create infinite geeky facts about himself, but we can't! Check out our GitHub page to help add more!");
+	} else {
+		// there are still facts in the array, so picks a random one
+		var index = Math.floor(Math.random() * chuck_norris_geeky_facts.length);
+		$("#fact").text(chuck_norris_geeky_facts[index]);
 
+		// remove this fact from the facts list to avoid repeating facts
+		chuck_norris_geeky_facts.splice(index, 1);
+	}
+}
+
+// set up handler for when random fact button clicked
+$("#random_fact").click(getAFact);
+
+// initialize text
+getAFact();
+
+// google analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
