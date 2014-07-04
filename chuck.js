@@ -110,7 +110,7 @@ var getAFact = function() {
 $("#random_fact").click(getAFact);
 
 // initialize text
-$("#fact").text(getAFact);
+getAFact();
 
 // google analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
