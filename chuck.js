@@ -128,7 +128,7 @@ function tweet(event) {
 
   // open the Twitter pop-up dialog
   window.open('http://twitter.com/share?url=' + popUp.url +
-  						'&text=' + popUp.message +
+  						'&text=' + escape(popUp.message) +
   						'&',
   						'twitterwindow',
   						'height=' + popUp.height +
@@ -141,7 +141,7 @@ function tweet(event) {
 // set up handler for when random fact button clicked
 $("#random_fact").click(getAFact);
 // bind the tweet function
-$('.tweet').bind('click tap touchend', { 'popUp' : {} } , tweet);
+$('.tweet').bind('click tap touchend', { 'popUp' : { 'message' : $('#fact').text() } } , tweet);
 
 // google analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
