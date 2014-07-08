@@ -115,8 +115,8 @@ function tweet(event) {
 
   // default parameters
 	defaults = {
-		'url'     : 'asdasd',
-		'message' : 'asdasd',
+		'url'     : '',
+		'message' : '',
 		'height'  : 450,
 		'width'   : 550,
 		'top'     : $(window).height()/2 - 225,
@@ -141,7 +141,14 @@ function tweet(event) {
 // set up handler for when random fact button clicked
 $("#random_fact").click(getAFact);
 // bind the tweet function
-$('.tweet').bind('click tap touchend', { 'popUp' : { 'message' : $('#fact').text() } } , tweet);
+$('.tweet').bind('click tap touchend',
+	{
+		'popUp' :
+		{
+			'url'     : window.location.href,
+			'message' : $('#fact').text(),
+		}
+	}, tweet);
 
 // google analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
