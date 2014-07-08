@@ -115,8 +115,8 @@ function tweet(event) {
 
   // default parameters
 	defaults = {
+		'text' : '',
 		'url'     : window.location.href,
-		'message' : '',
 		'height'  : 450,
 		'width'   : 550,
 		'top'     : $(window).height()/2 - 225,
@@ -126,9 +126,21 @@ function tweet(event) {
 	// merge default parameters with the one eventually passed to the function
 	var popUp = $.extend(defaults, event.data.popUp);
 
+	popUp.text = escape(popUp.text);
+
+	var tweetLengthLimit = 140;
+	var tweetUrlLengthLimitForHTTP = 22;
+	var tweetUrlLengthLimitForHTTPS = 23;
+	var spacesBetweenTextAndUrl = 1
+	var tweetUrlLengthLimit = window.location.protocol === "https:" ?
+														tweetUrlLengthLimitForHTTPS :
+														tweetUrlLengthLimitForHTTP;
+	var tweetTextLengthLimit = tweetLengthLimit - tweetUrlLengthLimit - spacesBetweenTextAndUrl;
+	popUp.text = popUp.text.substring(0, tweetTextLengthLimit) + ' ' + popUp.url;
+
   // open the Twitter pop-up dialog
   window.open('http://twitter.com/share?url=' + popUp.url +
-  						'&text=' + escape(popUp.message) +
+  						'&text=' + popUp.text +
   						'&',
   						'twitterwindow',
   						'height=' + popUp.height +
@@ -145,7 +157,7 @@ $('.tweet').bind('click tap touchend',
 	{
 		'popUp' :
 		{
-			'message' : $('#fact').text(),
+			'text' : $('#fact').text(),
 		}
 	}, tweet);
 
