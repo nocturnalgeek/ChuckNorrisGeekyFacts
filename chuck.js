@@ -108,17 +108,13 @@ var chuck_norris_geeky_facts = [
 })();
 
 // set up handler for when random fact button clicked
-$("#random_fact").click(getAFact);
+$("#random_fact").on('click tap touchend', getAFact);
 // bind the tweet function
-$('.tweet').bind('click tap touchend',
-	{
-		'popUp' :
-		{
-			'message' : $('#fact').text(),
-		}
-	},
-	tweet
-);
+$('.tweet').on('click tap touchend', function() {
+	tweet({
+		'message' : $('#fact').text()
+	});
+});
 
 // google analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

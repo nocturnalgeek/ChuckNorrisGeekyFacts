@@ -1,7 +1,6 @@
 
-function tweet(event) {
-  event.preventDefault();
-  openPopUp(getPopUp(event.data.popUp));
+function tweet(popUp) {
+  openPopUp(getPopUp(popUp));
 };
 
 function getPopUp(customAttributes) {
@@ -33,7 +32,6 @@ function prepareMessage(popUp) {
 }
 
 function openPopUp(popUp) {
-  console.log(popUp.message);
   window.open('http://twitter.com/share?url=' + popUp.url +
               '&text=' + popUp.message +
               '&',
