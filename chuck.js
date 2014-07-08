@@ -115,7 +115,7 @@ function tweet(event) {
 
   // default parameters
 	defaults = {
-		'url'     : '',
+		'url'     : window.location.href,
 		'message' : '',
 		'height'  : 450,
 		'width'   : 550,
@@ -145,7 +145,6 @@ $('.tweet').bind('click tap touchend',
 	{
 		'popUp' :
 		{
-			'url'     : window.location.href,
 			'message' : $('#fact').text(),
 		}
 	}, tweet);
