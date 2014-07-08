@@ -91,7 +91,8 @@ var chuck_norris_geeky_facts = [
 	"Chuck Norris wrote Hello World once... it was called Unix."
 ];
 
-var getAFact = function() {
+// define and call the function right away for initial page load!
+(getAFact = function() {
 	// check if we're out of facts to avoid an indexOutOfBounds exception
 	if(chuck_norris_geeky_facts.length === 0) {
 		// all the facts have been seen, tell user that they're done.
@@ -104,13 +105,10 @@ var getAFact = function() {
 		// remove this fact from the facts list to avoid repeating facts
 		chuck_norris_geeky_facts.splice(index, 1);
 	}
-}
+})();
 
 // set up handler for when random fact button clicked
 $("#random_fact").click(getAFact);
-
-// initialize text
-getAFact();
 
 // google analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
