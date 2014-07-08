@@ -107,48 +107,6 @@ var chuck_norris_geeky_facts = [
 	}
 })();
 
-// define the function to tweet
-function tweet(event) {
-
-	// do nothing you douchebag!
-  event.preventDefault();
-
-  // default parameters
-	defaults = {
-		'text' : '',
-		'url'     : window.location.href,
-		'height'  : 450,
-		'width'   : 550,
-		'top'     : $(window).height()/2 - 225,
-		'left'    : $(window).width()/2
-	};
-
-	// merge default parameters with the one eventually passed to the function
-	var popUp = $.extend(defaults, event.data.popUp);
-
-	var tweetLengthLimit = 140;
-	var tweetUrlLengthLimitForHTTP = 22;
-	var tweetUrlLengthLimitForHTTPS = 23;
-	var trimString = '...';
-	var tweetUrlLengthLimit = window.location.protocol === "https:" ?
-														tweetUrlLengthLimitForHTTPS :
-														tweetUrlLengthLimitForHTTP;
-	var tweetTextLengthLimit = tweetLengthLimit - tweetUrlLengthLimit - trimString.length;
-
-	popUp.text = escape(popUp.text).substring(0, tweetTextLengthLimit) + (tweetTextLengthLimit < popUp.text.length ? trimString : ' ') + popUp.url;
-
-  // open the Twitter pop-up dialog
-  window.open('http://twitter.com/share?url=' + popUp.url +
-  						'&text=' + popUp.text +
-  						'&',
-  						'twitterwindow',
-  						'height=' + popUp.height +
-  						', width=' + popUp.width +
-  						', top=' + popUp.top +
-  						', left=' + popUp.left +
-  						', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
-};
-
 // set up handler for when random fact button clicked
 $("#random_fact").click(getAFact);
 // bind the tweet function
@@ -156,7 +114,7 @@ $('.tweet').bind('click tap touchend',
 	{
 		'popUp' :
 		{
-			'text' : $('#fact').text(),
+			'message' : $('#fact').text(),
 		}
 	},
 	tweet
