@@ -107,7 +107,7 @@ var chuck_norris_geeky_facts = [
 	}
 })();
 
-// define the tweet function handler
+// define the function to tweet
 function tweet(event) {
 
 	// do nothing you douchebag!
@@ -122,8 +122,6 @@ function tweet(event) {
 		'top'     : $(window).height()/2 - 225,
 		'left'    : $(window).width()/2
 	};
-
-	console.log(event.data.popUp);
 
 	// merge default parameters with the one eventually passed to the function
 	var popUp = $.extend(defaults, event.data.popUp);
@@ -143,7 +141,7 @@ function tweet(event) {
 // set up handler for when random fact button clicked
 $("#random_fact").click(getAFact);
 // bind the tweet function
-$('.tweet').bind('click tap touchend', { 'popUp' : {'message' : 'bella zio'} } , tweet);
+$('.tweet').bind('click tap touchend', { 'popUp' : {} } , tweet);
 
 // google analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
