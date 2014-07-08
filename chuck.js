@@ -126,19 +126,18 @@ function tweet(event) {
 	// merge default parameters with the one eventually passed to the function
 	var popUp = $.extend(defaults, event.data.popUp);
 
-	popUp.text = escape("Chuck Norris is never shown a login window. The computers sense his awesomeness and automagically log him in with administrator privileges.");
+	popUp.text = escape("Chuck Norris is never shown a login window");
 
 	var tweetLengthLimit = 140;
 	var tweetUrlLengthLimitForHTTP = 22;
 	var tweetUrlLengthLimitForHTTPS = 23;
-	var spacesBetweenTextAndUrl = 1
 	var trimString = '...';
 	var tweetUrlLengthLimit = window.location.protocol === "https:" ?
 														tweetUrlLengthLimitForHTTPS :
 														tweetUrlLengthLimitForHTTP;
-	var tweetTextLengthLimit = tweetLengthLimit - tweetUrlLengthLimit - spacesBetweenTextAndUrl - trimString.length;
+	var tweetTextLengthLimit = tweetLengthLimit - tweetUrlLengthLimit - trimString.length;
 
-	popUp.text = popUp.text.substring(0, tweetTextLengthLimit) + trimString + ' ' + popUp.url;
+	popUp.text = popUp.text.substring(0, tweetTextLengthLimit) + (tweetTextLengthLimit < popUp.text.length ? trimString : ' ') + popUp.url;
 
   // open the Twitter pop-up dialog
   window.open('http://twitter.com/share?url=' + popUp.url +
