@@ -107,8 +107,43 @@ var chuck_norris_geeky_facts = [
 	}
 })();
 
+// define the tweet function handler
+function tweet(event) {
+
+	// do nothing you douchebag!
+  event.preventDefault();
+
+  // default parameters
+	defaults = {
+		'url'     : 'asdasd',
+		'message' : 'asdasd',
+		'height'  : 450,
+		'width'   : 550,
+		'top'     : $(window).height()/2 - 225,
+		'left'    : $(window).width()/2
+	};
+
+	console.log(event.data.popUp);
+
+	// merge default parameters with the one eventually passed to the function
+	var popUp = $.extend(defaults, event.data.popUp);
+
+  // open the Twitter pop-up dialog
+  window.open('http://twitter.com/share?url=' + popUp.url +
+  						'&text=' + popUp.message +
+  						'&',
+  						'twitterwindow',
+  						'height=' + popUp.height +
+  						', width=' + popUp.width +
+  						', top=' + popUp.top +
+  						', left=' + popUp.left +
+  						', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+};
+
 // set up handler for when random fact button clicked
 $("#random_fact").click(getAFact);
+// bind the tweet function
+$('.tweet').bind('click tap touchend', { 'popUp' : {'message' : 'bella zio'} } , tweet);
 
 // google analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
