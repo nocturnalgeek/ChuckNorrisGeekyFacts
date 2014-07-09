@@ -1,6 +1,6 @@
 
-function tweet(popUp) {
-  openPopUp(getPopUp(popUp));
+function tweet(customAttributes) {
+  openPopUp(getPopUp(customAttributes));
 };
 
 function getPopUp(customAttributes) {
