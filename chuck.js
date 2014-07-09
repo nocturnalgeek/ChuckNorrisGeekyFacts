@@ -108,9 +108,9 @@ var chuck_norris_geeky_facts = [
 })();
 
 // set up handler for when random fact button clicked
-$("#random_fact").on('click tap touchend', getAFact);
+$("#random_fact").on('click tap', getAFact);
 // bind the tweet function
-$('.tweet').on('click tap touchend', function() {
+$('.tweet').on('click tap', function() {
 	tweet({
 		'message' : $('#fact').text()
 	});
