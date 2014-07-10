@@ -88,7 +88,8 @@ var chuck_norris_geeky_facts = [
 	"In plain C# every statement ends with a semicolon. But in Chuck Norris C# code all statements end with one or more exclamation marks. Because everything Chuck Norris does is amazing!",
 	"Chuck Norris can deny the \"License Agreement\" and still be able to install the software.",
 	"Google won't search for Chuck Norris because it knows you don't find Chuck Norris, he finds you.",
-	"Chuck Norris wrote Hello World once... it was called Unix."
+	"Chuck Norris wrote Hello World once... it was called Unix.",
+	"Chuck Norris can parse HTML with Regular expressions."
 ];
 
 var getAFact = function() {
