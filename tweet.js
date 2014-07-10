@@ -28,7 +28,7 @@ function prepareMessage(popUp) {
                             tweetUrlLengthLimitForHTTPS :
                             tweetUrlLengthLimitForHTTP;
   var tweetTextLengthLimit = tweetLengthLimit - tweetUrlLengthLimit - trimString.length;
-  return escape(popUp.message).substring(0, tweetTextLengthLimit) + (tweetTextLengthLimit < popUp.message.length ? trimString : ' ') + popUp.url;
+  return escape(popUp.message).substring(0, tweetTextLengthLimit) + (tweetTextLengthLimit < popUp.message.length ? trimString : ' ');
 }
 
 function openPopUp(popUp) {
