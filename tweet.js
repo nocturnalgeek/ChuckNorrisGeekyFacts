@@ -23,7 +23,7 @@ function prepareMessage(popUp) {
   var tweetLengthLimit = 140;
   var tweetUrlLengthLimitForHTTP = 22;
   var tweetUrlLengthLimitForHTTPS = 23;
-  var trimString = '... ';
+  var trimString = '...';
   var tweetUrlLengthLimit = window.location.protocol === "https:" ?
                             tweetUrlLengthLimitForHTTPS :
                             tweetUrlLengthLimitForHTTP;
