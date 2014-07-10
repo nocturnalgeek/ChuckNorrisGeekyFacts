@@ -23,11 +23,12 @@ function prepareMessage(popUp) {
   var tweetLengthLimit = 140;
   var tweetUrlLengthLimitForHTTP = 22;
   var tweetUrlLengthLimitForHTTPS = 23;
+  var numberOfSpaceAfterUrl = 1;
   var trimString = '...';
   var tweetUrlLengthLimit = window.location.protocol === "https:" ?
                             tweetUrlLengthLimitForHTTPS :
                             tweetUrlLengthLimitForHTTP;
-  var tweetTextLengthLimit = tweetLengthLimit - tweetUrlLengthLimit - trimString.length;
+  var tweetTextLengthLimit = tweetLengthLimit - tweetUrlLengthLimit - numberOfSpaceAfterUrl - trimString.length;
   var message = popUp.message.substring(0, tweetTextLengthLimit) + (tweetTextLengthLimit <= popUp.message.length ? trimString : '');
   return encodeURIComponent(message);
 }
